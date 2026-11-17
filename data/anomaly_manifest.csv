@@ -1,0 +1,17 @@
+scenario,record_ids,dataset,detail,expected_category
+B. Cumulative rounding,TXN-0021,platform + bank,platform 19206.67 vs bank 19206.66 (diff -0.01),MATCHED_ROUNDING (+ AGGREGATE_ROUNDING breach)
+B. Cumulative rounding,TXN-0022,platform + bank,platform 23692.66 vs bank 23692.65 (diff -0.01),MATCHED_ROUNDING (+ AGGREGATE_ROUNDING breach)
+B. Cumulative rounding,TXN-0023,platform + bank,platform 15767.99 vs bank 15767.98 (diff -0.01),MATCHED_ROUNDING (+ AGGREGATE_ROUNDING breach)
+B. Cumulative rounding,TXN-0024,platform + bank,platform 1636.11 vs bank 1636.10 (diff -0.01),MATCHED_ROUNDING (+ AGGREGATE_ROUNDING breach)
+B. Cumulative rounding,TXN-0025,platform + bank,platform 14017.68 vs bank 14017.67 (diff -0.01),MATCHED_ROUNDING (+ AGGREGATE_ROUNDING breach)
+B. Cumulative rounding,TXN-0026,platform + bank,platform 8275.85 vs bank 8275.84 (diff -0.01),MATCHED_ROUNDING (+ AGGREGATE_ROUNDING breach)
+B. Cumulative rounding,TXN-0027,platform + bank,platform 21993.60 vs bank 21993.59 (diff -0.01),MATCHED_ROUNDING (+ AGGREGATE_ROUNDING breach)
+B. Cumulative rounding,TXN-0028,platform + bank,platform 11543.35 vs bank 11543.34 (diff -0.01),MATCHED_ROUNDING (+ AGGREGATE_ROUNDING breach)
+B. Cumulative rounding,TXN-0029,platform + bank,platform 4402.98 vs bank 4402.97 (diff -0.01),MATCHED_ROUNDING (+ AGGREGATE_ROUNDING breach)
+B. Cumulative rounding,TXN-0030,platform + bank,platform 24560.43 vs bank 24560.42 (diff -0.01),MATCHED_ROUNDING (+ AGGREGATE_ROUNDING breach)
+C. Duplicate entry,"TXN-0031 (bank rows BNK-0031, BNK-0031-D)",bank only,Same transaction_id/amount/currency posted twice in the bank file,MATCHED (BNK-0031) + DUPLICATE_BANK (BNK-0031-D)
+A. Late settlement,TXN-0032 (bank BNK-D0032),platform (Nov) + December bank file,"Recorded 2026-11-30, settled 2026-12-01",PENDING_AT_CUTOFF without Dec evidence; LATE_SETTLEMENT with it
+Ordinary unmatched (platform),TXN-0033,platform only,"Recorded 2026-11-12, no bank settlement in Nov or Dec",MISSING_SETTLEMENT
+Amount mismatch,TXN-0034 (bank BNK-0034),platform + bank,Bank settled Rs 25.00 less than recorded,AMOUNT_MISMATCH
+Ordinary unmatched (bank),TXN-0099 (bank BNK-0099),bank only,Bank credit with no platform record,UNMATCHED_BANK
+D. Orphan refund,"RFD-0099 (bank BNK-R099), original TXN-9999",bank only,"Refund of Rs 750.00 referencing TXN-9999, which is not in the platform dataset",ORPHAN_REFUND

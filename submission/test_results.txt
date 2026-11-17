@@ -1,0 +1,68 @@
+# Command: pytest -v -o addopts=  (run 2026-11-17 16:15, Python 3.13.5)
+============================= test session starts =============================
+platform win32 -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\Shashank\AppData\Local\Programs\Python\Python313\python.exe
+hypothesis profile 'default'
+rootdir: D:\onelab-payment-reconciliation
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.13.0, hypothesis-6.167.1, langsmith-0.12.2, asyncio-1.4.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 55 items
+
+tests/test_reconciliation.py::TestMoney::test_parse_amount_to_paise[100-10000] PASSED [  1%]
+tests/test_reconciliation.py::TestMoney::test_parse_amount_to_paise[100.5-10050] PASSED [  3%]
+tests/test_reconciliation.py::TestMoney::test_parse_amount_to_paise[0.01-1] PASSED [  5%]
+tests/test_reconciliation.py::TestMoney::test_parse_amount_to_paise[1,234.56-123456] PASSED [  7%]
+tests/test_reconciliation.py::TestMoney::test_parse_amount_to_paise[  42.10 -4210] PASSED [  9%]
+tests/test_reconciliation.py::TestMoney::test_parse_amount_to_paise[-5.00--500] PASSED [ 10%]
+tests/test_reconciliation.py::TestMoney::test_parse_amount_rejects_bad_values[] PASSED [ 12%]
+tests/test_reconciliation.py::TestMoney::test_parse_amount_rejects_bad_values[abc] PASSED [ 14%]
+tests/test_reconciliation.py::TestMoney::test_parse_amount_rejects_bad_values[1.234] PASSED [ 16%]
+tests/test_reconciliation.py::TestMoney::test_parse_amount_rejects_bad_values[NaN] PASSED [ 18%]
+tests/test_reconciliation.py::TestMoney::test_parse_amount_rejects_bad_values[inf] PASSED [ 20%]
+tests/test_reconciliation.py::TestMoney::test_parse_amount_rejects_bad_values[None] PASSED [ 21%]
+tests/test_reconciliation.py::TestMoney::test_no_float_drift PASSED      [ 23%]
+tests/test_reconciliation.py::TestMoney::test_format_inr_indian_grouping PASSED [ 25%]
+tests/test_reconciliation.py::TestMatching::test_exact_match PASSED      [ 27%]
+tests/test_reconciliation.py::TestMatching::test_refund_matched_and_netted PASSED [ 29%]
+tests/test_reconciliation.py::TestMatching::test_refund_never_matches_payment PASSED [ 30%]
+tests/test_reconciliation.py::TestMatching::test_amount_mismatch_beyond_tolerance PASSED [ 32%]
+tests/test_reconciliation.py::TestMatching::test_one_bank_record_cannot_match_two_platform_records PASSED [ 34%]
+tests/test_reconciliation.py::TestMatching::test_source_amounts_preserved PASSED [ 36%]
+tests/test_reconciliation.py::TestTiming::test_late_settlement_is_pending_at_cutoff PASSED [ 38%]
+tests/test_reconciliation.py::TestTiming::test_late_settlement_with_december_evidence PASSED [ 40%]
+tests/test_reconciliation.py::TestTiming::test_post_cutoff_row_in_main_bank_file_is_treated_as_evidence PASSED [ 41%]
+tests/test_reconciliation.py::TestTiming::test_missing_settlement_outside_lag_window PASSED [ 43%]
+tests/test_reconciliation.py::TestTiming::test_missing_even_with_evidence_when_not_found PASSED [ 45%]
+tests/test_reconciliation.py::TestTiming::test_lag_boundary PASSED       [ 47%]
+tests/test_reconciliation.py::TestTiming::test_unrelated_december_records_ignored PASSED [ 49%]
+tests/test_reconciliation.py::TestRounding::test_individual_rounding_within_tolerance PASSED [ 50%]
+tests/test_reconciliation.py::TestRounding::test_cumulative_rounding_breaches_aggregate_tolerance PASSED [ 52%]
+tests/test_reconciliation.py::TestRounding::test_offsetting_rounding_does_not_breach PASSED [ 54%]
+tests/test_reconciliation.py::TestRounding::test_tolerance_is_configurable PASSED [ 56%]
+tests/test_reconciliation.py::TestDuplicates::test_duplicate_bank_entry_detected_original_preserved PASSED [ 58%]
+tests/test_reconciliation.py::TestDuplicates::test_duplicate_not_double_counted PASSED [ 60%]
+tests/test_reconciliation.py::TestDuplicates::test_conflicting_duplicate_flagged PASSED [ 61%]
+tests/test_reconciliation.py::TestOrphans::test_orphan_refund PASSED     [ 63%]
+tests/test_reconciliation.py::TestOrphans::test_bank_refund_for_known_payment_is_unmatched_not_orphan PASSED [ 65%]
+tests/test_reconciliation.py::TestOrphans::test_unmatched_bank_payment PASSED [ 67%]
+tests/test_reconciliation.py::TestCurrency::test_currency_mismatch_never_matched PASSED [ 69%]
+tests/test_reconciliation.py::TestValidation::test_invalid_csv_bytes PASSED [ 70%]
+tests/test_reconciliation.py::TestValidation::test_non_utf8_file PASSED  [ 72%]
+tests/test_reconciliation.py::TestValidation::test_missing_required_columns PASSED [ 74%]
+tests/test_reconciliation.py::TestValidation::test_empty_datasets PASSED [ 76%]
+tests/test_reconciliation.py::TestValidation::test_empty_platform_all_bank_unmatched PASSED [ 78%]
+tests/test_reconciliation.py::TestValidation::test_zero_and_negative_amounts_rejected_not_dropped[0] PASSED [ 80%]
+tests/test_reconciliation.py::TestValidation::test_zero_and_negative_amounts_rejected_not_dropped[0.00] PASSED [ 81%]
+tests/test_reconciliation.py::TestValidation::test_zero_and_negative_amounts_rejected_not_dropped[-100.00] PASSED [ 83%]
+tests/test_reconciliation.py::TestValidation::test_row_level_errors PASSED [ 85%]
+tests/test_reconciliation.py::TestValidation::test_out_of_period_record PASSED [ 87%]
+tests/test_reconciliation.py::TestValidation::test_uploaded_csv_roundtrip PASSED [ 89%]
+tests/test_reconciliation.py::TestSampleData::test_deterministic PASSED  [ 90%]
+tests/test_reconciliation.py::TestSampleData::test_minimum_sizes PASSED  [ 92%]
+tests/test_reconciliation.py::TestSampleData::test_all_anomalies_as_of_cutoff PASSED [ 94%]
+tests/test_reconciliation.py::TestSampleData::test_late_settlement_with_december PASSED [ 96%]
+tests/test_reconciliation.py::TestSampleData::test_financial_totals_exact PASSED [ 98%]
+tests/test_reconciliation.py::TestSampleData::test_full_report_csv PASSED [100%]
+
+============================= 55 passed in 3.61s ==============================
