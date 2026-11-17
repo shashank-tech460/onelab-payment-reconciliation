@@ -22,3 +22,11 @@ These are recorded in the session itself. The export is the source of truth.
   - Chart legends overlapped their titles.
   - The page title was clipped under Streamlit's header, and adjacent bridge labels collided. Labels now wrap onto two lines.
   The first headless screenshot attempt captured only Streamlit's loading skeleton, because the websocket session had not connected. It was replaced by a DevTools-driven capture with a real wait.
+- The repository was pushed to GitHub. Claude Code's own `gh repo create … --push` was blocked by the Claude Code permission classifier even though the candidate had approved it in chat. Claude did not work around the block. The candidate ran the same command with the `!` prefix, and Claude then verified via `gh`/the GitHub API that `origin/main` matched local `c1cec04`.
+- Final audit session:
+  - pytest was rerun: 55 passed.
+  - The four anomalies were verified in both reconciliation modes.
+  - The −₹16,575.10 variance was recomputed independently from the raw CSVs with `Decimal`.
+  - Tracked files were scanned for secrets and personal data, with no findings.
+  - A fresh clone was installed into a clean virtualenv to confirm there are no local-only dependencies.
+  - Browser automation was not available, so Streamlit Cloud deployment is left to the candidate.

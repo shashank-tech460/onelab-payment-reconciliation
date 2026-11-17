@@ -2,22 +2,24 @@
 
 | Item | Status | Location |
 |---|---|---|
-| Deployed application URL | ⏳ **Not yet deployed.** It needs the candidate's GitHub and Streamlit Cloud sign-in (steps below). | _<paste URL after verifying it loads>_ |
-| Source code ZIP | ✅ Built | `submission/onelab-payment-reconciliation.zip` |
-| Demo video | ⏳ To be recorded by candidate | Checklist: `demo_video_checklist.md` · link: _<paste>_ |
+| GitHub repository | ✅ Public, `main` pushed (verified via `gh` / GitHub API) | https://github.com/shashank-tech460/onelab-payment-reconciliation |
+| Deployed application URL | ⏳ **Not yet deployed.** Needs the candidate's Streamlit Community Cloud sign-in in a browser (steps below). | _<paste URL after it is opened and verified>_ |
+| Source code ZIP | ✅ Built and verified (opens, required files present) | `submission/onelab-payment-reconciliation.zip` (local; not committed) |
+| Demo video | ⏳ To be recorded by candidate. No video exists yet. | Script: `demo_script.md` · checklist: `demo_video_checklist.md` · link: _<paste>_ |
 | Three production limitations | ✅ | `docs/production_limitations.md` (summary below) |
 | Test results | ✅ 55 passed, 0 failed (executed) | `docs/test_cases.md`, `submission/test_results.txt` |
 
-## Deploying (needs your credentials)
-1. `gh auth login` (once), then from the project root:
-   ```bash
-   git init -b main
-   git add .
-   git commit -m "Payment reconciliation system"
-   gh repo create onelab-payment-reconciliation --public --source . --push
-   ```
-2. Go to https://share.streamlit.io, sign in with GitHub, click **Create app**, choose the repo and branch `main`, and set the main file to `app.py`. Click **Deploy**.
-3. Open the URL, confirm the dashboard loads with the sample data, and paste the URL above.
+## Deploying on Streamlit Community Cloud (candidate action)
+1. Go to https://share.streamlit.io and sign in with GitHub. Authorize Streamlit if asked.
+2. Click **Create app**, then **Deploy a public app from GitHub**.
+3. Set repository `shashank-tech460/onelab-payment-reconciliation`, branch `main`, main file `app.py`. No secrets are needed.
+4. Click **Deploy** and wait for the build, about 2–4 minutes.
+5. Open the URL and check:
+   - the header shows "UNRECONCILED - EXCEPTIONS REQUIRE REVIEW"
+   - Total variance is −₹16,575.10
+   - each Results sub-tab lists its anomaly
+   - **Complete reconciliation report** downloads
+6. Paste the URL in the table above.
 
 ## Three things this system could get wrong in production
 1. **Reference dependence.** Matching requires the bank to carry our `transaction_id`. Settlements that are net of fees, batched, or carry only the bank's reference would produce false missing and unmatched breaks.

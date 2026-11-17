@@ -53,7 +53,7 @@ submission/                 assessment deliverables
 
 ## Installation
 ```bash
-git clone <your-repo-url> onelab-payment-reconciliation
+git clone https://github.com/shashank-tech460/onelab-payment-reconciliation.git
 cd onelab-payment-reconciliation
 python -m venv .venv
 # Windows: .venv\Scripts\activate    macOS/Linux: source .venv/bin/activate
